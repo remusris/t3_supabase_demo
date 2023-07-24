@@ -1,0 +1,29 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model users {
+    user_id        String           @id @db.Uuid
+    updated_at     DateTime?        @db.Timestamptz(6)
+    privateExample privateExample[]
+}
+
+model example {
+    id          String    @id @default(uuid()) @db.Uuid
+    firstEntry  String?
+    lastUpdated DateTime? @updatedAt @db.Timestamptz(6)
+}
+
+model privateExample {
+    id          String    @id @default(uuid()) @db.Uuid
+    user_id     String    @db.Uuid
+    users       users     @relation(fields: [user_id], references: [user_id])
+    firstEntry  String?
+    lastUpdated DateTime? @updatedAt @db.Timestamptz(6)
+}
