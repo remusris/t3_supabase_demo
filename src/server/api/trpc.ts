@@ -10,6 +10,7 @@
 import {
   createPagesServerClient,
   type User,
+  type Session,
 } from "@supabase/auth-helpers-nextjs";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
@@ -26,7 +27,7 @@ import { prisma } from "~/server/db";
  */
 
 interface CreateContextOptions {
-  session: User | null;
+  user: User | null;
 }
 
 /**
