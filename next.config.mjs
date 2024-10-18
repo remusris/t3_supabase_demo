@@ -8,6 +8,14 @@ await import("./src/env.mjs");
 const config = {
   reactStrictMode: true,
 
+  webpack(config) {
+    config.experiments = {
+      asyncWebAssembly: true,
+      layers: true,
+    };
+
+    return config;
+  },
   /**
    * If you have `experimental: { appDir: true }` set, then you must comment the below `i18n` config
    * out.
@@ -18,6 +26,9 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-};
 
+  experimental: {
+    scrollRestoration: true,
+  },
+};
 export default config;

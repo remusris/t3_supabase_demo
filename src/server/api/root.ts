@@ -1,5 +1,6 @@
-import { exampleRouter } from "~/server/api/routers/example";
-import { createTRPCRouter } from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { firstTestRouter } from "./routers/firstTest";
+import { exampleRouter } from "./routers/example";
 import { firstRouter } from "./routers/firstRouter";
 
 /**
@@ -8,8 +9,11 @@ import { firstRouter } from "./routers/firstRouter";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
+  getTodos: publicProcedure.query(async () => [10, 20, 30]),
+  firstTest: firstTestRouter,
   example: exampleRouter,
   first: firstRouter,
+
 });
 
 // export type definition of API
