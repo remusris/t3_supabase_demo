@@ -3,7 +3,9 @@
 Check the "app_router" branch to use the app router version of this repo.  
 
 To-do tutorial associated with this repo below
+
 https://dev.to/remusris/t3-stack-template-supabase-w-auth-db-and-shadcn-ui-basic-setup-2bl9
+
 https://remusrisnov.hashnode.dev/t3-stack-template-supabase-w-auth-db-and-shadcn-ui-basic-setup
 
 # Create T3 App
